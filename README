@@ -1,0 +1,58 @@
+# Praktikum Pemrograman Web I - Pertemuan 6
+
+## Identitas
+
+Nama: ISI NAMA
+NIM: ISI NIM
+Kelas: ISI KELAS
+
+## Deskripsi
+
+Aplikasi keranjang belanja sederhana tanpa basis data
+menggunakan PHP.
+
+## Fitur
+
+- Session untuk menyimpan keranjang
+- Flash message
+- Cookie tema Light dan Dark
+- Tambah produk
+- Hapus produk
+- Kosongkan keranjang
+- Perhitungan subtotal
+- Perhitungan total
+- Validasi input
+- Escape output
+
+## Cara Menjalankan
+
+1. Buka XAMPP.
+2. Jalankan Apache.
+3. Simpan folder pertemuan-06 di:
+
+C:/xampp/htdocs/web1/
+
+4. Buka browser.
+
+5. Masukkan alamat:
+
+http://localhost/web1/pertemuan-06/
+
+## Produk
+
+1. Kopi Susu - Rp15.000
+2. Roti Cokelat - Rp12.000
+3. Teh Lemon - Rp10.000
+
+## Pengujian
+
+1. Katalog dapat dibuka.
+2. Produk dapat ditambahkan.
+3. Produk yang sama dapat ditambahkan lebih dari satu kali.
+4. Jumlah produk bertambah.
+5. Total dihitung dengan benar.
+6. Produk dapat dihapus.
+7. Keranjang dapat dikosongkan.
+8. Flash message tampil.
+9. Tema Light dan Dark dapat digunakan.
+10. Input produk yang tidak valid ditolak.
