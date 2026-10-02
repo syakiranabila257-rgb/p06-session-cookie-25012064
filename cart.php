@@ -1,16 +1,19 @@
 <?php
-declare(strict_types=1);
 
 require_once __DIR__ . '/bootstrap.php';
 require_once __DIR__ . '/functions.php';
 
 $products = require __DIR__ . '/data/products.php';
 
-$allowedThemes = ['light', 'dark'];
+$allowedThemes = array('light', 'dark');
 
-$theme = $_COOKIE['theme'] ?? 'light';
+if (isset($_COOKIE['theme'])) {
+    $theme = $_COOKIE['theme'];
+} else {
+    $theme = 'light';
+}
 
-if (!in_array($theme, $allowedThemes, true)) {
+if (!in_array($theme, $allowedThemes)) {
     $theme = 'light';
 }
 
@@ -22,23 +25,28 @@ $total = 0;
 
 $title = 'Keranjang';
 
-require __DIR__ . '/components/header.php';
+require __DIR__ . '/Components/header.php';
+
 ?>
 
 <h1>
     Keranjang Belanja
 </h1>
 
+<p>
+    Kelola produk yang sudah kamu tambahkan.
+</p>
+
 <?php if ($flash !== null): ?>
 
     <div class="flash">
-        <?= e($flash) ?>
+        <?php echo e($flash); ?>
     </div>
 
 <?php endif; ?>
 
 
-<?php if ($cart === []): ?>
+<?php if (empty($cart)): ?>
 
     <div class="empty">
 
@@ -82,21 +90,21 @@ require __DIR__ . '/components/header.php';
                 <div>
 
                     <strong>
-                        <?= e($product['nama']) ?>
+                        <?php echo e($product['nama']); ?>
                     </strong>
 
                     <span>
 
-                        <?= (int) $quantity ?>
+                        <?php echo (int) $quantity; ?>
 
                         ×
 
-                        Rp<?= number_format(
+                        Rp<?php echo number_format(
                             $product['harga'],
                             0,
                             ',',
                             '.'
-                        ) ?>
+                        ); ?>
 
                     </span>
 
@@ -106,12 +114,12 @@ require __DIR__ . '/components/header.php';
 
                     <strong>
 
-                        Rp<?= number_format(
+                        Rp<?php echo number_format(
                             $subtotal,
                             0,
                             ',',
                             '.'
-                        ) ?>
+                        ); ?>
 
                     </strong>
 
@@ -130,7 +138,7 @@ require __DIR__ . '/components/header.php';
                         <input
                             type="hidden"
                             name="id"
-                            value="<?= (int) $id ?>"
+                            value="<?php echo (int) $id; ?>"
                         >
 
                         <button
@@ -157,12 +165,12 @@ require __DIR__ . '/components/header.php';
 
             <strong>
 
-                Rp<?= number_format(
+                Rp<?php echo number_format(
                     $total,
                     0,
                     ',',
                     '.'
-                ) ?>
+                ); ?>
 
             </strong>
 
@@ -205,4 +213,4 @@ require __DIR__ . '/components/header.php';
 <?php endif; ?>
 
 
-<?php require __DIR__ . '/components/footer.php'; ?>
+<?php require __DIR__ . '/Components/footer.php'; ?>
